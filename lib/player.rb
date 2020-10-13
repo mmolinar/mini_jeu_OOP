@@ -19,7 +19,7 @@ class Player
 
   def attacks(player2)
     damg = compute_damage
-    puts "#{@name} hurts #{player2.name} and takes a hit of #{damg} points"
+    puts "#{@name} hurts #{player2.name} and takes a hit of #{damg} points."
     player2.gets_damage(damg)
   end
 
