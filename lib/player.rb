@@ -7,21 +7,20 @@ class Player
   end
 
   def show_state
-    puts "#{name} has #{life_points} life points."
+    puts "#{@name} has #{@life_points} life points."
   end
 
   def gets_damage(damage)
-    @life_points = life_points - damage
+    @life_points = @life_points - damage
     if @life_points <= 0
       puts "#{name} is dead!"
     end
   end
 
   def attacks(player2)
-    puts "#{@name} attacks #{player2.name}"
-    damage = compute_damage
-    player2.gets_damage(damage)
-    puts "#{@name} hurts #{player2.name} and takes a hit of #{damage} points"
+    damg = compute_damage
+    puts "#{@name} hurts #{player2.name} and takes a hit of #{damg} points"
+    player2.gets_damage(damg)
   end
 
   def compute_damage

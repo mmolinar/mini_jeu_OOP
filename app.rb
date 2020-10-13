@@ -4,13 +4,29 @@ Bundler.require
 require_relative 'lib/game' # Gives acces to these files so I can call them within app.rb
 require_relative 'lib/player'
 
-puts "À ma droite #{input name of player1}"
-puts "À ma gauche #{input name of player2}"
-puts "Voici l'état de chaque joueur :"
-puts  "#{player1.name} a #{show_state of player1} points"
-puts "#{player2.name} a #{show_state of player2} points"
+puts "Player 1 what is your name?"
+plyr1name = gets.chomp
+puts "Player 2 what is your name?"
+plyr2name =  gets.chomp
+player1 = Player.new(plyr1name) # The other possibility is player1.name if I hadn't asker for their names
+player2 = Player.new(plyr2name)
+puts "On my right #{plyr1name}"
+puts "On my left #{plyr2name}"
+puts "The life status of each player:"
+player1.show_state
+player2.show_state
 puts "Fight!"
-player1.attacks(player2)
-player2.attacks(player1) #this doesnt exist .reverse ne marche pas ?
+while player1.life_points > 0 && player2.life_points > 0
+    if player1.life_points > 0 
+      player1.attacks(player2)
+    else
+      break
+    end
+    if player2.life_points > 0 
+      player2.attacks(player1)
+    else
+      break
+    end
+end
 
 binding.pry 
